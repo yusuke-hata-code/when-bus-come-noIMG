@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --cache --cache-location node_modules/.cache/.eslintcache --ignore-pattern node_modules/",
+    "format": "npm run lint -- --fix; prettier --cache --ignore-unknown --write --loglevel warn '{,!(node_modules)/**/}*'",
+    "type": "tsc --noEmit"
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -17,5 +19,13 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint": "^8.33.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-unicorn": "^45.0.2"
   }
 }
