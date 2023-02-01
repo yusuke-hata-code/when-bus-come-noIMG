@@ -1,7 +1,7 @@
-import type { VFC } from 'react';
+import type { FC } from 'react';
 import { useState, useEffect } from 'react';
 type Props = { dist: 'takatsuki' | 'tonda' };
-type State = { diagramArr: number[]; currentTime: string };
+type State = { diagramArr: number[] };
 const distObj = {
   takatsuki: '高槻',
   tonda: '富田',
@@ -15,10 +15,9 @@ const tomorrow = new Date(
   0
 );
 
-export const DiagramTable: VFC<Props> = ({ dist }) => {
+export const DiagramTable: FC<Props> = ({ dist }) => {
   const [diagram, setDiagram] = useState<State>({
     diagramArr: [0, 1],
-    currentTime: '0',
   });
   useEffect(() => {
     (async () => {
@@ -30,14 +29,6 @@ export const DiagramTable: VFC<Props> = ({ dist }) => {
     setTimeout(() => {
       location.reload();
     }, tomorrow.getTime() - new Date().getTime());
-    const timer = setInterval(() => {
-      setDiagram({
-        ...diagram,
-        currentTime: `${new Date().getHours()}時${new Date().getMinutes()}分${new Date().getSeconds()}秒`,
-      });
-      1000;
-    });
-    return () => clearInterval(timer);
   }, []);
   return (
     <table border={1}>
@@ -66,7 +57,6 @@ export const DiagramTable: VFC<Props> = ({ dist }) => {
 
 export const filterDiagramArr = ({ state }: { state: State }) => {
   const currentTime = new Date().getTime();
-  console.log(state.diagramArr);
   const filteredDiagramArr = state.diagramArr
     .filter((diagram: number) => {
       return diagram >= currentTime + 120 * 1000;
@@ -78,6 +68,7 @@ export const filterDiagramArr = ({ state }: { state: State }) => {
   const limitTimeTable = limitMinute({ diagramArr: filteredDiagramArr });
   const timeTable = unixTimeToViewTime({ diagramArr: filteredDiagramArr });
   return timeTable.map((time, i) => {
+    console.log({ time: time, limit: limitTimeTable[i] });
     return { time: time, limit: limitTimeTable[i] };
   });
 };
