@@ -1,0 +1,9 @@
+.currentTime {
+  text-align: center;
+  font-size: 50px;
+}
+
+.diagramTables {
+  display: flex;
+  justify-content: center;
+}

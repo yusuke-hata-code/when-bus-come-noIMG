@@ -1,11 +1,13 @@
 import type { FC } from 'react';
 import { useState, useEffect } from 'react';
+import style from './diagramTable.module.css';
 type Props = { dist: 'takatsuki' | 'tonda' };
 type State = { diagramArr: number[] };
 const distObj = {
   takatsuki: '高槻',
   tonda: '富田',
 };
+
 const tommorrowNow = new Date(new Date().getTime() + 1000 * 3600 * 24);
 const tomorrow = new Date(
   tommorrowNow.getFullYear(),
@@ -31,19 +33,25 @@ export const DiagramTable: FC<Props> = ({ dist }) => {
     }, tomorrow.getTime() - new Date().getTime());
   }, []);
   return (
-    <table border={1}>
+    <table border={1} className={`${style[dist]} ${style.diagramTable}`}>
       <tbody>
         <tr>
           <th colSpan={3}>{distObj[dist]}行き</th>
         </tr>
-        <tr>
+        <tr className={style.index}>
           <td>時刻</td>
           <td>残り</td>
         </tr>
         {filterDiagramArr({ state: diagram }).map((diagram) => {
           return (
             <>
-              <tr>
+              <tr
+                className={
+                  Math.trunc(diagram.limit / 60) < 15
+                    ? style.beliefdeparture
+                    : ''
+                }
+              >
                 <td>{diagram.time}</td>
                 <td>{`${Math.trunc(diagram.limit / 60)}分`}</td>
               </tr>

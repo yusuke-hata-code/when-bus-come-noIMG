@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { DiagramTable } from '@/components/diagramTable';
+import style from './index.module.css';
 // let sampleDiagram: number[] = [
 //   1675200900000, 1675202460000, 1675205040000, 1675206600000, 1675210680000,
 //   1675212300000, 1675215600000, 1675216980000, 1675219200000, 1675222740000,
@@ -36,13 +37,14 @@ export default function Home() {
         <title>when-bus-come</title>
       </Head>
       <div>
-        <div>
+        <div className={style.currentTime}>
           現在時刻
           {currentTime}
         </div>
-        <DiagramTable dist="takatsuki" />
-
-        <DiagramTable dist="tonda" />
+        <div className={style.diagramTables}>
+          <DiagramTable dist="takatsuki" />
+          <DiagramTable dist="tonda" />
+        </div>
       </div>
     </>
   );

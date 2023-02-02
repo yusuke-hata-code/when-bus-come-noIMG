@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap');
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-family: 'BIZ UDGothic', sans-serif;
+  background-color: rgba(178, 243, 239, 0.749);
 }
