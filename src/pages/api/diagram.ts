@@ -1,14 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { Temporal } from '@js-temporal/polyfill';
 import { JSDOM } from 'jsdom';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 // /api/diagram?dest=tonda
 // /api/diagram?dest=takatsuki
 
 type Diagram = number[];
 
-const getUrl = (type: 'takatsuki' | 'tonda' | string): string | null => {
+const getUrl = (type: string | 'takatsuki' | 'tonda'): string | null => {
   const baseUrl =
     'https://transfer.navitime.biz/takatsuki/smart/diagram/Search/bus';
   const datetime = `${Temporal.Now.plainDateISO().toString()}T03:00+09:00`;
@@ -43,6 +43,7 @@ const getDiagram = async (url: string): Promise<Diagram> => {
     ...document.querySelectorAll('div[style="display:block"] .hour-frame'),
   ].flatMap((e) => {
     const hour = `0${e.getAttribute('value')}`.slice(-2);
+
     return [...e.querySelectorAll('.minute>span[aria-hidden="true"]')].map(
       (e) => new Date(`${dateString}T${hour}:${e.textContent}+09:00`).getTime()
     );
@@ -53,6 +54,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse<Diagram>) => {
   if (typeof req.query.dest === 'string') {
     const url = getUrl(req.query.dest);
     console.log(url);
+
     if (url) {
       return getDiagram(url)
         .then((diagram) => {
@@ -62,6 +64,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse<Diagram>) => {
         .catch(() => res.status(404).json([]));
     }
   }
+
   return res.status(404).json([]);
 };
 

@@ -1,14 +1,17 @@
-import type { FC } from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import style from './diagramTable.module.css';
+import type { FC } from 'react';
+
 type Props = { dist: 'takatsuki' | 'tonda' };
+
 type State = { diagramArr: number[] };
+
 const distObj = {
   takatsuki: '高槻',
   tonda: '富田',
 };
 
-const tommorrowNow = new Date(new Date().getTime() + 1000 * 3600 * 24);
+const tommorrowNow = new Date(Date.now() + 1000 * 3600 * 24);
 const tomorrow = new Date(
   tommorrowNow.getFullYear(),
   tommorrowNow.getMonth() - 1,
@@ -28,10 +31,12 @@ export const DiagramTable: FC<Props> = ({ dist }) => {
       ).json();
       setDiagram({ ...diagram, diagramArr: takatsukiResponse });
     })();
+
     setTimeout(() => {
       location.reload();
-    }, tomorrow.getTime() - new Date().getTime());
+    }, tomorrow.getTime() - Date.now());
   }, []);
+
   return (
     <table border={1} className={`${style[dist]} ${style.diagramTable}`}>
       <tbody>
@@ -64,7 +69,7 @@ export const DiagramTable: FC<Props> = ({ dist }) => {
 };
 
 export const filterDiagramArr = ({ state }: { state: State }) => {
-  const currentTime = new Date().getTime();
+  const currentTime = Date.now();
   const filteredDiagramArr = state.diagramArr
     .filter((diagram: number) => {
       return diagram >= currentTime + 120 * 1000;
@@ -75,8 +80,10 @@ export const filterDiagramArr = ({ state }: { state: State }) => {
 
   const limitTimeTable = limitMinute({ diagramArr: filteredDiagramArr });
   const timeTable = unixTimeToViewTime({ diagramArr: filteredDiagramArr });
+
   return timeTable.map((time, i) => {
     console.log({ time: time, limit: limitTimeTable[i] });
+
     return { time: time, limit: limitTimeTable[i] };
   });
 };
@@ -89,6 +96,7 @@ const unixTimeToViewTime = ({
   return diagramArr.map((diagram) => {
     const hour = new Date(diagram).getHours();
     const minute = String(new Date(diagram).getMinutes()).padStart(2, '0');
+
     return `${hour}:${minute}`;
   });
 };
@@ -98,11 +106,13 @@ const limitMinute = ({ diagramArr }: { diagramArr: number[] }) => {
     new Date().getHours() * 3600 +
     new Date().getMinutes() * 60 +
     new Date().getSeconds();
+
   return diagramArr.map((diagram: number) => {
     const diagramMinutes =
       new Date(diagram).getHours() * 3600 +
       new Date(diagram).getMinutes() * 60 +
       new Date(diagram).getSeconds();
+
     return diagramMinutes - currentMinutes;
   });
 };

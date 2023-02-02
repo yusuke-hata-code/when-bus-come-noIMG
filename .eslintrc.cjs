@@ -10,7 +10,21 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:unicorn/recommended',
   ],
-  overrides: [],
+  overrides: [
+    {
+      files: ['*.{spec,test}.{js,ts}'],
+      rules: {
+        'no-console': 'off',
+      },
+    },
+    {
+      files: ['*.config.{js,ts}'],
+      rules: {
+        'import/no-default-export': 'off',
+        'unicorn/prefer-module': 'off',
+      },
+    },
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
