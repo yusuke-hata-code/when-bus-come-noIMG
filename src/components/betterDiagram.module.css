@@ -59,7 +59,7 @@
   }
 }
 
-.dist {
+.takatsuki {
   font-family: 'Nico Moji';
   font-weight: 700;
   font-size: 11rem;
@@ -67,10 +67,20 @@
   letter-spacing: 0.02em;
   text-align: center;
   color: #ffffff;
-  text-shadow: 5px 5px 0px #45439e, 10px 10px 0px #62c3ff, 15px 15px 0px #ff80bf,
-    20px 20px 0px #ef5097, 25px 25px 0px #6868ac, 30px 30px 0px #90b1e0;
+  text-shadow: 5px 5px 0px #82aae3, 10px 10px 0px #91d8e4, 15px 15px 0px #bfeaf5,
+    20px 20px 0px #eafdfc;
 }
-
+.tonda {
+  font-family: 'Nico Moji';
+  font-weight: 700;
+  font-size: 11rem;
+  text-shadow: -15px 5px 20px #ced0d3;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: white;
+  text-shadow: 5px 5px 0px #ff7b54, 10px 10px 0px #ffb26b, 15px 15px 0px #ffd56f,
+    20px 20px 0px #fff2b1;
+}
 /*
  * Nico Moji (Japanese) https://fonts.google.com/earlyaccess
  */

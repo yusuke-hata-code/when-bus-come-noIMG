@@ -68,7 +68,7 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
     filterDiagramArr({ state: diagram }).map((diagram, i) => {
       return (
         <>
-          <div className={i ? style.none : style.dist}>{distObj[dist]}</div>
+          <div className={i ? style.none : style[dist]}>{distObj[dist]}</div>
           <div className={i ? style.subDiagram : style.diagram}>
             <div className={style.time}>{diagram.time}</div>
             <div className={style.limit}>
