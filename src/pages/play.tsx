@@ -34,7 +34,16 @@ export default function play() {
       <Head>
         <title>when-bus-come</title>
       </Head>
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          width: '100vw',
+          height: '100vh',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
+      >
         <div className={style.currentTime}>{currentTime}</div>
         <div className={style.diagramTables}>
           <div className={style.takatsuki}>
