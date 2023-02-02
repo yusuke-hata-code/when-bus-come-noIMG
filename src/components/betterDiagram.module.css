@@ -1,0 +1,91 @@
+.diagram {
+  border: 10px #ffffff solid;
+  border-radius: 20px;
+  flex-flow: column;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  font-size: 60px;
+  background-color: white;
+  justify-content: space-around;
+  font-family: 'Potta One', cursive;
+  font-weight: bold;
+}
+.subDiagram {
+  text-align: center;
+  margin-top: 40px;
+  flex-flow: column;
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  justify-content: space-around;
+  font-family: 'Potta One', cursive;
+  font-weight: bold;
+}
+.number {
+  text-align: left;
+}
+
+.alert {
+  margin-top: 30px;
+  border-radius: 20px;
+  font-size: 40px;
+  font-family: 'Nico Moji';
+  color: white;
+  background-color: rgb(255, 157, 0);
+  text-align: center;
+  animation: flash 1.5s linear infinite;
+}
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+.none {
+  display: none;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dist {
+  font-family: 'Nico Moji';
+  font-weight: 700;
+  font-size: 11rem;
+  text-shadow: -15px 5px 20px #ced0d3;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 5px 5px 0px #45439e, 10px 10px 0px #62c3ff, 15px 15px 0px #ff80bf,
+    20px 20px 0px #ef5097, 25px 25px 0px #6868ac, 30px 30px 0px #90b1e0;
+}
+
+/*
+ * Nico Moji (Japanese) https://fonts.google.com/earlyaccess
+ */
+@font-face {
+  font-family: 'Nico Moji';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.eot);
+  src: url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.eot?#iefix)
+      format('embedded-opentype'),
+    url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.woff2)
+      format('woff2'),
+    url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/nicomoji/v1/NicoMoji-Regular.ttf)
+      format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');

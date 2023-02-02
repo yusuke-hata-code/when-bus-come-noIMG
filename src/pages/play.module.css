@@ -1,0 +1,26 @@
+.currentTime {
+  font-family: 'Concert One', cursive;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.diagramTables {
+  display: flex;
+  justify-content: center;
+}
+
+.takatsuki {
+  width: 700px;
+  margin-right: 100px;
+}
+
+.tonda {
+  width: 700px;
+  margin-left: 100px;
+}
+
+/*
+ * Nikukyu (Japanese) https://fonts.google.com/earlyaccess
+ */
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');

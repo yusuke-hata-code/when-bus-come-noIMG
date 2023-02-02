@@ -4,6 +4,9 @@
 .diagramTable th {
   padding: 5px;
 }
+.diagramTable td {
+  text-align: center;
+}
 .takatsuki {
   box-shadow: 0 0 10px 0 #49a0fc;
   font-size: 40px;

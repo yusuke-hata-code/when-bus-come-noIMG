@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-import style from './diagramTable.module.css';
 import type { FC } from 'react';
-
+import style from './betterDiagram.module.css';
 type Props = { dist: 'takatsuki' | 'tonda' };
 
 type State = { diagramArr: number[] };
 
 const distObj = {
-  takatsuki: '高槻',
-  tonda: '富田',
+  takatsuki: 'たかつき',
+  tonda: 'とんだ',
 };
 
 const tommorrowNow = new Date(Date.now() + 1000 * 3600 * 24);
@@ -20,7 +19,7 @@ const tomorrow = new Date(
   0
 );
 
-export const DiagramTable: FC<Props> = ({ dist }) => {
+export const BetterDiagramTable: FC<Props> = ({ dist }) => {
   const [diagram, setDiagram] = useState<State>({
     diagramArr: [0, 1],
   });
@@ -38,33 +37,54 @@ export const DiagramTable: FC<Props> = ({ dist }) => {
   }, []);
 
   return (
-    <table border={1} className={`${style[dist]} ${style.diagramTable}`}>
-      <tbody>
-        <tr>
-          <th colSpan={3}>{distObj[dist]}行き</th>
-        </tr>
-        <tr className={style.index}>
-          <td>時刻</td>
-          <td>残り</td>
-        </tr>
-        {filterDiagramArr({ state: diagram }).map((diagram) => {
-          return (
-            <>
-              <tr
-                className={
-                  Math.trunc(diagram.limit / 60) < 35
-                    ? style.beliefdeparture
-                    : ''
-                }
-              >
-                <td>{diagram.time}</td>
-                <td>{`${Math.trunc(diagram.limit / 60)}分`}</td>
-              </tr>
-            </>
-          );
-        })}
-      </tbody>
-    </table>
+    // <table border={1} className={`${style[dist]} ${style.diagramTable}`}>
+    //   <tbody>
+    //     <tr>
+    //       <th colSpan={3}>{distObj[dist]}行き</th>
+    //     </tr>
+    //     <tr className={style.index}>
+    //       <td>時刻</td>
+    //       <td>残り</td>
+    //     </tr>
+    //     {filterDiagramArr({ state: diagram }).map((diagram) => {
+    //       return (
+    //         <>
+    //           <tr
+    //             className={
+    //               Math.trunc(diagram.limit / 60) < 35
+    //                 ? style.beliefdeparture
+    //                 : ''
+    //             }
+    //           >
+    //             <td>{diagram.time}</td>
+    //             <td>{`${Math.trunc(diagram.limit / 60)}分`}</td>
+    //           </tr>
+    //         </>
+    //       );
+    //     })}
+    //   </tbody>
+    // </table>
+
+    filterDiagramArr({ state: diagram }).map((diagram, i) => {
+      return (
+        <>
+          <div className={i ? style.none : style.dist}>{distObj[dist]}</div>
+          <div className={i ? style.subDiagram : style.diagram}>
+            <div className={style.time}>{diagram.time}</div>
+            <div className={style.limit}>
+              あと{Math.trunc(diagram.limit / 60)}分
+            </div>
+          </div>
+          <div
+            className={
+              Math.trunc(diagram.limit / 60) < 37 ? style.alert : style.none
+            }
+          >
+            おくれないでね
+          </div>
+        </>
+      );
+    })
   );
 };
 
