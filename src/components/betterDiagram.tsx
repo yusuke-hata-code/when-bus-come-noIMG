@@ -36,55 +36,56 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
     }, tomorrow.getTime() - Date.now());
   }, []);
 
+  // <table border={1} className={`${style[dist]} ${style.diagramTable}`}>
+  //   <tbody>
+  //     <tr>
+  //       <th colSpan={3}>{distObj[dist]}行き</th>
+  //     </tr>
+  //     <tr className={style.index}>
+  //       <td>時刻</td>
+  //       <td>残り</td>
+  //     </tr>
+  //     {filterDiagramArr({ state: diagram }).map((diagram) => {
+  //       return (
+  //         <>
+  //           <tr
+  //             className={
+  //               Math.trunc(diagram.limit / 60) < 35
+  //                 ? style.beliefdeparture
+  //                 : ''
+  //             }
+  //           >
+  //             <td>{diagram.time}</td>
+  //             <td>{`${Math.trunc(diagram.limit / 60)}分`}</td>
+  //           </tr>
+  //         </>
+  //       );
+  //     })}
+  //   </tbody>
+  // </table>
   return (
-    // <table border={1} className={`${style[dist]} ${style.diagramTable}`}>
-    //   <tbody>
-    //     <tr>
-    //       <th colSpan={3}>{distObj[dist]}行き</th>
-    //     </tr>
-    //     <tr className={style.index}>
-    //       <td>時刻</td>
-    //       <td>残り</td>
-    //     </tr>
-    //     {filterDiagramArr({ state: diagram }).map((diagram) => {
-    //       return (
-    //         <>
-    //           <tr
-    //             className={
-    //               Math.trunc(diagram.limit / 60) < 35
-    //                 ? style.beliefdeparture
-    //                 : ''
-    //             }
-    //           >
-    //             <td>{diagram.time}</td>
-    //             <td>{`${Math.trunc(diagram.limit / 60)}分`}</td>
-    //           </tr>
-    //         </>
-    //       );
-    //     })}
-    //   </tbody>
-    // </table>
-
-    filterDiagramArr({ state: diagram }).map((diagram, i) => {
-      return (
-        <>
-          <div className={i ? style.none : style[dist]}>{distObj[dist]}</div>
-          <div className={i ? style.subDiagram : style.diagram}>
-            <div className={style.time}>{diagram.time}</div>
-            <div className={style.limit}>
-              あと{Math.trunc(diagram.limit / 60)}分
+    <>
+      {filterDiagramArr({ state: diagram }).map((diagram, i) => {
+        return (
+          <>
+            <div className={i ? style.none : style[dist]}>{distObj[dist]}</div>
+            <div className={i ? style.subDiagram : style.diagram}>
+              <div className={style.time}>{diagram.time}</div>
+              <div className={style.limit}>
+                あと{Math.trunc(diagram.limit / 60)}分
+              </div>
             </div>
-          </div>
-          <div
-            className={
-              Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
-            }
-          >
-            おくれないでね
-          </div>
-        </>
-      );
-    })
+            <div
+              className={
+                Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
+              }
+            >
+              おくれないでね
+            </div>
+          </>
+        );
+      })}
+    </>
   );
 };
 
