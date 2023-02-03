@@ -19,3 +19,22 @@
   width: 700px;
   margin-left: 100px;
 }
+
+.hanitan {
+  width: 80px;
+  position: absolute;
+  right: 0;
+  animation: anim 30s linear infinite;
+}
+
+@keyframes anim {
+  0% {
+    transform: translateX(0) scale(1, 1);
+  }
+  50% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    tramsform: translateX(0);
+  }
+}
