@@ -66,13 +66,18 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
   return (
     <>
       {filterDiagramArr({ state: diagram }).map((diagram, i) => {
+        console.log(diagram.limit, i);
         return (
           <>
             <div className={i ? style.none : style[dist]}>{distObj[dist]}</div>
             <div className={i ? style.subDiagram : style.diagram}>
               <div className={style.time}>{diagram.time}</div>
               <div className={style.limit}>
-                あと{Math.trunc(diagram.limit / 60)}分
+                {Math.trunc(diagram.limit / 60) > 10
+                  ? `あと${Math.trunc(diagram.limit / 60)}分`
+                  : `あと${Math.trunc(diagram.limit / 60)}分${
+                      diagram.limit - Math.trunc(diagram.limit / 60) * 60
+                    }秒`}
               </div>
             </div>
             <div
@@ -103,8 +108,6 @@ export const filterDiagramArr = ({ state }: { state: State }) => {
   const timeTable = unixTimeToViewTime({ diagramArr: filteredDiagramArr });
 
   return timeTable.map((time, i) => {
-    console.log({ time: time, limit: limitTimeTable[i] });
-
     return { time: time, limit: limitTimeTable[i] };
   });
 };
@@ -133,7 +136,6 @@ const limitMinute = ({ diagramArr }: { diagramArr: number[] }) => {
       new Date(diagram).getHours() * 3600 +
       new Date(diagram).getMinutes() * 60 +
       new Date(diagram).getSeconds();
-
     return diagramMinutes - currentMinutes;
   });
 };

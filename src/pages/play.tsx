@@ -23,8 +23,13 @@ export default function play() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTime(`${new Date().getHours()}:${new Date().getMinutes()}`);
-    }, 1500);
+      setCurrentTime(
+        `${new Date().getHours()}:${String(new Date().getMinutes()).padStart(
+          2,
+          '0'
+        )}:${String(new Date().getSeconds()).padStart(2, '0')}`
+      );
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
