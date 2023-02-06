@@ -68,8 +68,6 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
   return (
     <>
       {filterDiagramArr({ state: diagram }).map((diagram, i) => {
-        console.log(SearchTrafficInfo());
-
         return (
           <>
             <div className={i ? style.none : style[dist]}>{distObj[dist]}</div>

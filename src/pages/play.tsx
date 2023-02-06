@@ -2,8 +2,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import style from './play.module.css';
+import type { ReturnObject } from './api/trafficinfo';
 import { BetterDiagramTable } from '@/components/betterDiagram';
-import { SearchTrafficInfo } from '@/pages/api/trafficinfo';
+import { Trafficinfo } from '@/components/trainInfo';
+
 // let sampleDiagram: number[] = [
 //   1675200900000, 1675202460000, 1675205040000, 1675206600000, 1675210680000,
 //   1675212300000, 1675215600000, 1675216980000, 1675219200000, 1675222740000,
@@ -60,6 +62,9 @@ export default function play() {
           <div className={style.tonda}>
             <BetterDiagramTable dist="tonda" />
           </div>
+        </div>
+        <div>
+          <Trafficinfo />
         </div>
       </div>
     </>

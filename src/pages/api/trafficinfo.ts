@@ -1,3 +1,5 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 type Stops = {
   lines: Lines;
   express: any;
@@ -66,7 +68,7 @@ type Transfer = {
 
 type status = 'delay' | 'normal' | 'stop';
 
-type ReturnObject = {
+export type ReturnObject = {
   kyoto: status;
   osakaloop: status;
   gakkentoshi: status;
@@ -140,8 +142,6 @@ const SearchTrafficInfo = async (): Promise<ReturnObject> => {
     }
   }
 
-  console.log(returnObject);
-
   return returnObject;
 
   // }
@@ -150,5 +150,14 @@ const SearchTrafficInfo = async (): Promise<ReturnObject> => {
   //   lines.push(trafficInfoJson.lines[line]);
   // }
 };
+
+const handler = async (
+  req: NextApiRequest,
+  res: NextApiResponse<ReturnObject>
+) => {
+  return res.status(200).json(await SearchTrafficInfo());
+};
+
+export default handler;
 
 SearchTrafficInfo();
