@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import style from './betterDiagram.module.css';
 import type { FC } from 'react';
+import { SearchTrafficInfo } from '@/pages/api/trafficinfo';
 
 type Props = { dist: 'takatsuki' | 'tonda' };
 
@@ -67,7 +68,7 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
   return (
     <>
       {filterDiagramArr({ state: diagram }).map((diagram, i) => {
-        console.log(diagram.limit, i);
+        console.log(SearchTrafficInfo());
 
         return (
           <>

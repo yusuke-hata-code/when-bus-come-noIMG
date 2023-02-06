@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import style from './play.module.css';
 import { BetterDiagramTable } from '@/components/betterDiagram';
-import Image from 'next/image';
+import { SearchTrafficInfo } from '@/pages/api/trafficinfo';
 // let sampleDiagram: number[] = [
 //   1675200900000, 1675202460000, 1675205040000, 1675206600000, 1675210680000,
 //   1675212300000, 1675215600000, 1675216980000, 1675219200000, 1675222740000,
