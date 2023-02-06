@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import type { FC } from 'react';
 import style from './betterDiagram.module.css';
+import type { FC } from 'react';
+
 type Props = { dist: 'takatsuki' | 'tonda' };
 
 type State = { diagramArr: number[] };
@@ -67,13 +68,14 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
     <>
       {filterDiagramArr({ state: diagram }).map((diagram, i) => {
         console.log(diagram.limit, i);
+
         return (
           <>
             <div className={i ? style.none : style[dist]}>{distObj[dist]}</div>
             <div className={i ? style.subDiagram : style.diagram}>
               <div className={style.time}>{diagram.time}</div>
               <div className={style.limit}>
-                {Math.trunc(diagram.limit / 60) > 10
+                {Math.trunc(diagram.limit / 60) > 9
                   ? `あと${Math.trunc(diagram.limit / 60)}分`
                   : `あと${Math.trunc(diagram.limit / 60)}分${
                       diagram.limit - Math.trunc(diagram.limit / 60) * 60
@@ -136,6 +138,7 @@ const limitMinute = ({ diagramArr }: { diagramArr: number[] }) => {
       new Date(diagram).getHours() * 3600 +
       new Date(diagram).getMinutes() * 60 +
       new Date(diagram).getSeconds();
+
     return diagramMinutes - currentMinutes;
   });
 };
