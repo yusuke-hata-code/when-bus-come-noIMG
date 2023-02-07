@@ -116,7 +116,7 @@ export const filterDiagramArr = ({ state }: { state: State }) => {
   const currentTime = Date.now();
   const filteredDiagramArr = state.diagramArr
     .filter((diagram: number) => {
-      return diagram >= currentTime + 120 * 1000;
+      return diagram >= currentTime;
     })
     .filter((_, i: number) => {
       return i < 3;
