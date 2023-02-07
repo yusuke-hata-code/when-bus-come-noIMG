@@ -87,7 +87,7 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
             <div>
               <div
                 className={
-                  Math.trunc(diagram.limit / 60) < 30 ? style.alert : style.none
+                  Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
                 }
               >
                 <img className={style.iconLeft} src={distImg[dist]}></img>
