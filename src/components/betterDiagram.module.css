@@ -29,12 +29,15 @@
 .alert {
   margin-top: 30px;
   border-radius: 20px;
+  align-items: center;
+  display: flex;
   font-size: 40px;
   font-family: 'Nico Moji';
   color: white;
   background-color: rgb(255, 157, 0);
   text-align: center;
   animation: flash 1.5s linear infinite;
+  justify-content: center;
 }
 @keyframes flash {
   0%,
@@ -80,6 +83,16 @@
   color: white;
   text-shadow: 5px 5px 0px #ff7b54, 10px 10px 0px #ffb26b, 15px 15px 0px #ffd56f,
     20px 20px 0px #fff2b1;
+}
+.basuoLeft {
+  width: 70px;
+  height: 70px;
+  margin-right: 100px;
+}
+.basuoRight {
+  width: 70px;
+  height: 70px;
+  margin-left: 100px;
 }
 /*
  * Nico Moji (Japanese) https://fonts.google.com/earlyaccess

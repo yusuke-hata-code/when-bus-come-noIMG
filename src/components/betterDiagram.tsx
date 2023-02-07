@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import type { FC } from 'react';
 import style from './betterDiagram.module.css';
+import type { FC } from 'react';
+
 type Props = { dist: 'takatsuki' | 'tonda' };
 
 type State = { diagramArr: number[] };
@@ -66,7 +67,6 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
   return (
     <>
       {filterDiagramArr({ state: diagram }).map((diagram, i) => {
-        console.log(diagram.limit, i);
         return (
           <>
             <div className={i ? style.none : style[dist]}>{distObj[dist]}</div>
@@ -80,12 +80,30 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
                     }秒`}
               </div>
             </div>
-            <div
-              className={
-                Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
-              }
-            >
-              おくれないでね
+            <div>
+              <div
+                className={
+                  Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
+                }
+              >
+                <img
+                  className={
+                    Math.trunc(diagram.limit / 60) < 10
+                      ? style.basuoLeft
+                      : style.none
+                  }
+                  src="basuo.png"
+                ></img>
+                おくれないでね
+                <img
+                  className={
+                    Math.trunc(diagram.limit / 60) < 10
+                      ? style.basuoRight
+                      : style.none
+                  }
+                  src="basuo.png"
+                ></img>
+              </div>
             </div>
           </>
         );
@@ -136,6 +154,7 @@ const limitMinute = ({ diagramArr }: { diagramArr: number[] }) => {
       new Date(diagram).getHours() * 3600 +
       new Date(diagram).getMinutes() * 60 +
       new Date(diagram).getSeconds();
+
     return diagramMinutes - currentMinutes;
   });
 };
