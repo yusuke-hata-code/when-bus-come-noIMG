@@ -21,6 +21,7 @@
 }
 
 .hanitan {
+  transform: translateX(80px) scale(1, 1);
   width: 80px;
   position: absolute;
   right: 0;
@@ -29,12 +30,18 @@
 
 @keyframes anim {
   0% {
-    transform: translateX(0) scale(1, 1);
+    transform: translateX(80px) scale(1, 1);
+  }
+  49% {
+    transform: translateX(-100vw) scale(1, 1);
   }
   50% {
-    transform: translateX(-100vw);
+    transform: translateX(-100vw) scale(-1, 1);
+  }
+  99% {
+    transform: translateX(80px) scale(-1, 1);
   }
   100% {
-    tramsform: translateX(0);
+    tramsform: translateX(80px) scale(1, 1);
   }
 }
