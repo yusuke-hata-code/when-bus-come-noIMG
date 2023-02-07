@@ -10,6 +10,10 @@ const distObj = {
   takatsuki: 'たかつき',
   tonda: 'とんだ',
 };
+const distImg = {
+  takatsuki: 'basuo.png',
+  tonda: 'yayoi.png',
+};
 
 const tommorrowNow = new Date(Date.now() + 1000 * 3600 * 24);
 const tomorrow = new Date(
@@ -83,26 +87,12 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
             <div>
               <div
                 className={
-                  Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
+                  Math.trunc(diagram.limit / 60) < 30 ? style.alert : style.none
                 }
               >
-                <img
-                  className={
-                    Math.trunc(diagram.limit / 60) < 10
-                      ? style.basuoLeft
-                      : style.none
-                  }
-                  src="basuo.png"
-                ></img>
+                <img className={style.iconLeft} src={distImg[dist]}></img>
                 おくれないでね
-                <img
-                  className={
-                    Math.trunc(diagram.limit / 60) < 10
-                      ? style.basuoRight
-                      : style.none
-                  }
-                  src="basuo.png"
-                ></img>
+                <img className={style.iconRight} src={distImg[dist]}></img>
               </div>
             </div>
           </>

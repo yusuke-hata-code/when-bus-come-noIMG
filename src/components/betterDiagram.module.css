@@ -84,12 +84,12 @@
   text-shadow: 5px 5px 0px #ff7b54, 10px 10px 0px #ffb26b, 15px 15px 0px #ffd56f,
     20px 20px 0px #fff2b1;
 }
-.basuoLeft {
+.iconLeft {
   width: 70px;
   height: 70px;
   margin-right: 100px;
 }
-.basuoRight {
+.iconRight {
   width: 70px;
   height: 70px;
   margin-left: 100px;
