@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import style from './betterDiagram.module.css';
-import type { FC } from 'react';
+import type { FC, FC } from 'react';
 
 type Props = { dist: 'takatsuki' | 'tonda' };
 
@@ -73,7 +73,7 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
             <div className={i ? style.subDiagram : style.diagram}>
               <div className={style.time}>{diagram.time}</div>
               <div className={style.limit}>
-                {Math.trunc(diagram.limit / 60) > 10
+                {Math.trunc(diagram.limit / 60) > 9
                   ? `あと${Math.trunc(diagram.limit / 60)}分`
                   : `あと${Math.trunc(diagram.limit / 60)}分${
                       diagram.limit - Math.trunc(diagram.limit / 60) * 60
