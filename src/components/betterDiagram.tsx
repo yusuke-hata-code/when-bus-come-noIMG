@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import style from './betterDiagram.module.css';
-import type { FC, FC } from 'react';
+import type { FC } from 'react';
 
 type Props = { dist: 'takatsuki' | 'tonda' };
 
