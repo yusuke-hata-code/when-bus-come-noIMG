@@ -3,6 +3,9 @@ import { Temporal } from '@js-temporal/polyfill';
 import { JSDOM } from 'jsdom';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+export const config = {
+  runtime: 'edge',
+};
 // /api/diagram?dest=tonda
 // /api/diagram?dest=takatsuki
 
