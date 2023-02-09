@@ -26,4 +26,5 @@
 .trafficInfo {
   display: flex;
   align-items: center;
+  margin-top: 32px;
 }
