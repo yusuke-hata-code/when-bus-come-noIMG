@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import style from './play.module.css';
 import type { ReturnObject } from './api/trafficinfo';
 import { BetterDiagramTable } from '@/components/betterDiagram';
+import { DiagramTable } from '@/components/diagramTable';
 import { Trafficinfo } from '@/components/trainInfo';
 
 // let sampleDiagram: number[] = [
@@ -28,12 +29,9 @@ export default function play() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(
-        `${new Date().getHours()}:${String(new Date().getMinutes()).padStart(
-          2,
-          '0'
-        )}:${String(new Date().getSeconds()).padStart(2, '0')}`
+        `${new Date().getHours()}時${new Date().getMinutes()}分${new Date().getSeconds()}秒`
       );
-    }, 1000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -42,18 +40,19 @@ export default function play() {
     <>
       <Head>
         <title>when-bus-come</title>
+        {/* <link
+          href="https://fonts.googleapis.com/earlyaccess/nicomoji.css"
+          rel="stylesheet"
+        /> */}
       </Head>
-      <img className={style.hanitan} src={'/hanitan.png'} alt="logo" />
-      <div className={style.wrraper}>
-        <div></div>
-        <div className={style.currentTime}>{currentTime}</div>
+      <div>
+        <div className={style.currentTime}>
+          現在時刻
+          {currentTime}
+        </div>
         <div className={style.diagramTables}>
-          <div className={style.takatsuki}>
-            <BetterDiagramTable dist="takatsuki" />
-          </div>
-          <div className={style.tonda}>
-            <BetterDiagramTable dist="tonda" />
-          </div>
+          <DiagramTable dist="takatsuki" />
+          <DiagramTable dist="tonda" />
         </div>
       </div>
       <div className={style.traffic}>

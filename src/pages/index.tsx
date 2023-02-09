@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import style from './index.module.css';
-import { DiagramTable } from '@/components/diagramTable';
+import { BetterDiagramTable } from '@/components/betterDiagram';
 // let sampleDiagram: number[] = [
 //   1675200900000, 1675202460000, 1675205040000, 1675206600000, 1675210680000,
 //   1675212300000, 1675215600000, 1675216980000, 1675219200000, 1675222740000,
@@ -18,15 +18,18 @@ import { DiagramTable } from '@/components/diagramTable';
 // ];
 
 //10:10,10:30,10:45,11:30,12:00
-export default function Home() {
+export default function home() {
   const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(
-        `${new Date().getHours()}時${new Date().getMinutes()}分${new Date().getSeconds()}秒`
+        `${new Date().getHours()}:${String(new Date().getMinutes()).padStart(
+          2,
+          '0'
+        )}:${String(new Date().getSeconds()).padStart(2, '0')}`
       );
-    }, 1500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -35,19 +38,26 @@ export default function Home() {
     <>
       <Head>
         <title>when-bus-come</title>
-        {/* <link
-          href="https://fonts.googleapis.com/earlyaccess/nicomoji.css"
-          rel="stylesheet"
-        /> */}
       </Head>
-      <div>
-        <div className={style.currentTime}>
-          現在時刻
-          {currentTime}
-        </div>
+      <img className={style.hanitan} src={'/hanitan.png'} alt="logo" />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          width: '100vw',
+          height: '100vh',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <div className={style.currentTime}>{currentTime}</div>
         <div className={style.diagramTables}>
-          <DiagramTable dist="takatsuki" />
-          <DiagramTable dist="tonda" />
+          <div className={style.takatsuki}>
+            <BetterDiagramTable dist="takatsuki" />
+          </div>
+          <div className={style.tonda}>
+            <BetterDiagramTable dist="tonda" />
+          </div>
         </div>
       </div>
     </>

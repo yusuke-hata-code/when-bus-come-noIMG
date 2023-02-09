@@ -11,6 +11,10 @@ const distObj = {
   takatsuki: 'たかつき',
   tonda: 'とんだ',
 };
+const distImg = {
+  takatsuki: 'basuo.png',
+  tonda: 'yayoi.png',
+};
 
 const tommorrowNow = new Date(Date.now() + 1000 * 3600 * 24);
 const tomorrow = new Date(
@@ -81,12 +85,16 @@ export const BetterDiagramTable: FC<Props> = ({ dist }) => {
                     }秒`}
               </div>
             </div>
-            <div
-              className={
-                Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
-              }
-            >
-              おくれないでね
+            <div>
+              <div
+                className={
+                  Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
+                }
+              >
+                <img className={style.iconLeft} src={distImg[dist]}></img>
+                おくれないでね
+                <img className={style.iconRight} src={distImg[dist]}></img>
+              </div>
             </div>
           </>
         );
@@ -99,7 +107,7 @@ export const filterDiagramArr = ({ state }: { state: State }) => {
   const currentTime = Date.now();
   const filteredDiagramArr = state.diagramArr
     .filter((diagram: number) => {
-      return diagram >= currentTime + 120 * 1000;
+      return diagram >= currentTime;
     })
     .filter((_, i: number) => {
       return i < 3;

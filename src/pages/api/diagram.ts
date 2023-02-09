@@ -1,8 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { Temporal } from '@js-temporal/polyfill';
-import { JSDOM } from 'jsdom';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { parseHTML } from 'linkedom';
+import type { NextRequest } from 'next/server';
 
+export const config = {
+  runtime: 'edge',
+};
 // /api/diagram?dest=tonda
 // /api/diagram?dest=takatsuki
 
@@ -37,7 +40,7 @@ const getUrl = (type: string | 'takatsuki' | 'tonda'): string | null => {
 const getDiagram = async (url: string): Promise<Diagram> => {
   const text = await (await fetch(url)).text();
   const dateString = Temporal.Now.plainDateISO().toString();
-  const document = new JSDOM(text).window.document;
+  const { document } = parseHTML(text);
 
   return [
     ...document.querySelectorAll('div[style="display:block"] .hour-frame'),
@@ -50,22 +53,34 @@ const getDiagram = async (url: string): Promise<Diagram> => {
   });
 };
 
-const handler = (req: NextApiRequest, res: NextApiResponse<Diagram>) => {
-  if (typeof req.query.dest === 'string') {
-    const url = getUrl(req.query.dest);
-    console.log(url);
+const handler = async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url);
+  const dest = searchParams.get('dest');
+
+  if (typeof dest === 'string') {
+    const url = getUrl(dest);
 
     if (url) {
-      return getDiagram(url)
-        .then((diagram) => {
-          console.log(diagram);
-          res.status(200).json(diagram);
-        })
-        .catch(() => res.status(404).json([]));
+      try {
+        const diagram = await getDiagram(url);
+
+        return new Response(JSON.stringify(diagram), {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        });
+      } catch {
+        return new Response(JSON.stringify([]), {
+          status: 404,
+          headers: { 'content-type': 'application/json' },
+        });
+      }
     }
   }
 
-  return res.status(404).json([]);
+  return new Response(JSON.stringify([]), {
+    status: 404,
+    headers: { 'content-type': 'application/json' },
+  });
 };
 
 export default handler;
