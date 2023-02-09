@@ -1,4 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextRequest } from 'next/server';
+
+export const config = {
+  runtime: 'edge',
+};
 
 type Stops = {
   lines: Lines;
@@ -151,11 +155,12 @@ const SearchTrafficInfo = async (): Promise<ReturnObject> => {
   // }
 };
 
-const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<ReturnObject>
-) => {
-  return res.status(200).json(await SearchTrafficInfo());
+const handler = async (req: NextRequest) => {
+  return new Response(JSON.stringify([await SearchTrafficInfo()]), {
+    status: 200,
+    headers: { 'content-type': 'application/json' },
+  });
+  // return new.status(200).json(await SearchTrafficInfo());
 };
 
 export default handler;

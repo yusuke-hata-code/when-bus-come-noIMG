@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import style from './betterDiagram.module.css';
 import type { FC } from 'react';
-import { SearchTrafficInfo } from '@/pages/api/trafficinfo';
 
 type Props = { dist: 'takatsuki' | 'tonda' };
 
