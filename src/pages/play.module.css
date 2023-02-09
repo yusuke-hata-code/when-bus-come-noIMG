@@ -27,6 +27,16 @@
   animation: anim 30s linear infinite;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.traffic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 @keyframes anim {
   0% {
     transform: translateX(0) scale(1, 1);

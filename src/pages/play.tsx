@@ -44,16 +44,8 @@ export default function play() {
         <title>when-bus-come</title>
       </Head>
       <img className={style.hanitan} src={'/hanitan.png'} alt="logo" />
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          width: '100vw',
-          height: '100vh',
-          justifyContent: 'center',
-          flexDirection: 'column',
-        }}
-      >
+      <div className={style.wrraper}>
+        <div></div>
         <div className={style.currentTime}>{currentTime}</div>
         <div className={style.diagramTables}>
           <div className={style.takatsuki}>
@@ -63,10 +55,18 @@ export default function play() {
             <BetterDiagramTable dist="tonda" />
           </div>
         </div>
-        <div>
-          <Trafficinfo />
-        </div>
+      </div>
+      <div className={style.traffic}>
+        <Trafficinfo />
       </div>
     </>
   );
 }
+// style={{
+//   display: 'flex',
+//   alignItems: 'center',
+//   width: '100vw',
+//   height: '100vh',
+//   justifyContent: 'center',
+//   flexDirection: 'column',
+// }}

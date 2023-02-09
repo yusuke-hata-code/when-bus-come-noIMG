@@ -15,6 +15,7 @@ module.exports = {
       files: ['*.{spec,test}.{js,ts}'],
       rules: {
         'no-console': 'off',
+        'unicorn/no-nested-ternary': 'off',
       },
     },
     {
@@ -32,6 +33,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'import'],
   rules: {
+    'unicorn/no-nested-ternary': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'react/prefer-stateless-function': ['error'],

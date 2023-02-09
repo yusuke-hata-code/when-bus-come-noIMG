@@ -1,5 +1,6 @@
 import { type } from 'node:os';
 import { useEffect, useState } from 'react';
+import style from './traininfo.module.css';
 import type { ReturnObject } from '@/pages/api/trafficinfo';
 import type { FC } from 'react';
 
@@ -36,8 +37,16 @@ export const Trafficinfo: FC = () => {
       {(Object.keys(trafficinfo) as (keyof ReturnObject)[]).map((lineName) => {
         return (
           <div key={lineName}>
-            <span>{resolveLineName[lineName]}</span>
-            <span>{trafficinfo[lineName]}</span>
+            <span className={style.line}>{resolveLineName[lineName]}</span>
+            {/* <span>{trafficinfo[lineName]}</span> */}
+
+            {trafficinfo[lineName] === 'normal' ? (
+              <img src="ico_side_normal.svg" width="60" height="60"></img>
+            ) : trafficinfo[lineName] === 'delay' ? (
+              <img src="ico_side_delay.svg" width="60" height="60"></img>
+            ) : (
+              <img src="ico_side_adjust.svg" width="60" height="60"></img>
+            )}
           </div>
         );
       })}
