@@ -1,4 +1,26 @@
 .line {
   font-size: 50px;
   bottom: 100pt;
+  font-family: 'Nico Moji';
 }
+.lineInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.symbol {
+  font-size: 50px;
+  color: white;
+  background-color: aliceblue;
+  width: 71px;
+  height: 71px;
+  text-align: center;
+  font-family: 'variableFont';
+  font-variation-settings: 'wdth' 300;
+}
+/* @font-face {
+  font-family: 'variableFont';
+  src: url('/SourceHanSans-VF.otf');
+  /* font-weight: 125 950; */
+/* font-stretch: 75% 125%; */

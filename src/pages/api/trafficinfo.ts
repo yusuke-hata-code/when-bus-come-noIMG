@@ -156,7 +156,7 @@ const SearchTrafficInfo = async (): Promise<ReturnObject> => {
 };
 
 const handler = async (req: NextRequest) => {
-  return new Response(JSON.stringify([await SearchTrafficInfo()]), {
+  return new Response(JSON.stringify(await SearchTrafficInfo()), {
     status: 200,
     headers: { 'content-type': 'application/json' },
   });

@@ -27,17 +27,27 @@ export const Trafficinfo: FC = () => {
   }, []);
 
   const resolveLineName = {
-    kyoto: '京都線',
-    osakaloop: '大阪環状線',
-    gakkentoshi: '学研都市線',
+    kyoto: { name: '京都線', symbol: 'A', color: 'rgb(16, 113, 182)' },
+    osakaloop: { name: '大阪環状線', symbol: 'O', color: 'rgb(245, 70, 94)' },
+    gakkentoshi: {
+      name: '学研都市線',
+      symbol: 'H',
+      color: 'rgb(223, 95, 130)',
+    },
   };
 
   return (
     <>
       {(Object.keys(trafficinfo) as (keyof ReturnObject)[]).map((lineName) => {
         return (
-          <div key={lineName}>
-            <span className={style.line}>{resolveLineName[lineName]}</span>
+          <div key={lineName} className={style.lineInfo}>
+            <span
+              className={style.symbol}
+              style={{ backgroundColor: resolveLineName[lineName].color }}
+            >
+              {resolveLineName[lineName].symbol}
+            </span>
+            <span className={style.line}>{resolveLineName[lineName].name}</span>
             {/* <span>{trafficinfo[lineName]}</span> */}
 
             {trafficinfo[lineName] === 'normal' ? (

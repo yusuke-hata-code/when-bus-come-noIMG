@@ -16,3 +16,10 @@ html {
   background-color: #e3dfdb;
   overflow: hidden;
 }
+
+@font-face {
+  font-family: 'variableFont';
+  src: url('/SourceHanSans-VF.otf') format('otf');
+  /* font-weight: 125 950; */
+  /* font-stretch: 75% 125%; */
+}
