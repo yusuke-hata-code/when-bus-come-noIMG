@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import style from './play.module.css';
-import type { ReturnObject } from './api/trafficinfo';
+import type { ReturnObject } from './api/trafficInfo';
 import { BetterDiagramTable } from '@/components/betterDiagram';
 import { DiagramTable } from '@/components/diagramTable';
 import { Trafficinfo } from '@/components/trainInfo';

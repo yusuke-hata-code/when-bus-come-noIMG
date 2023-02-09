@@ -1,26 +1,29 @@
-.line {
-  font-size: 50px;
-  bottom: 100pt;
-  font-family: 'Nico Moji';
-}
 .lineInfo {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  background-color: white;
+  font-size: 50px;
+}
+
+.line {
+  margin: 0 5px 0 10px;
 }
 
 .symbol {
-  font-size: 50px;
   color: white;
   background-color: aliceblue;
-  width: 71px;
-  height: 71px;
+  width: 70px;
+  height: 70px;
   text-align: center;
-  font-family: 'variableFont';
-  font-variation-settings: 'wdth' 300;
+  font-family: 'Open Sans', sans-serif;
 }
-/* @font-face {
-  font-family: 'variableFont';
-  src: url('/SourceHanSans-VF.otf');
-  /* font-weight: 125 950; */
-/* font-stretch: 75% 125%; */
+
+.symbolcircle {
+  border-radius: 50%;
+}
+
+.trafficInfo {
+  display: flex;
+  align-items: center;
+}

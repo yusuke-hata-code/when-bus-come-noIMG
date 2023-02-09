@@ -1,5 +1,3 @@
-import type { NextRequest } from 'next/server';
-
 export const config = {
   runtime: 'edge',
 };
@@ -70,12 +68,12 @@ type Transfer = {
   linkCode: string | null;
 };
 
-type status = 'delay' | 'normal' | 'stop';
+type Status = 'delay' | 'normal' | 'stop';
 
 export type ReturnObject = {
-  kyoto: status;
-  osakaloop: status;
-  gakkentoshi: status;
+  kyoto: Status;
+  osakaloop: Status;
+  gakkentoshi: Status;
 };
 
 const doFetch = async ({
@@ -147,22 +145,13 @@ const SearchTrafficInfo = async (): Promise<ReturnObject> => {
   }
 
   return returnObject;
-
-  // }
-  // for (const line of keys) {
-  //   console.log(trafficInfoJson.lines[line]);
-  //   lines.push(trafficInfoJson.lines[line]);
-  // }
 };
 
-const handler = async (req: NextRequest) => {
+const handler = async () => {
   return new Response(JSON.stringify(await SearchTrafficInfo()), {
     status: 200,
     headers: { 'content-type': 'application/json' },
   });
-  // return new.status(200).json(await SearchTrafficInfo());
 };
 
 export default handler;
-
-SearchTrafficInfo();

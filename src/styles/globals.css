@@ -3,6 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
 /* @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 *,
 *::before,
 *::after {
@@ -15,11 +18,4 @@ html {
   font-family: 'BIZ UDGothic', sans-serif;
   background-color: #e3dfdb;
   overflow: hidden;
-}
-
-@font-face {
-  font-family: 'variableFont';
-  src: url('/SourceHanSans-VF.otf') format('otf');
-  /* font-weight: 125 950; */
-  /* font-stretch: 75% 125%; */
 }
