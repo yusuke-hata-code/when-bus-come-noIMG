@@ -41,12 +41,12 @@ export const Trafficinfo: FC = () => {
     };
 
     fetchapi();
-    const interval = setInterval(fetchapi, 30_000);
+    const intervalMetro = setInterval(fetchapi, 30_000);
 
     return () => {
-      clearInterval(interval);
+      clearInterval(intervalMetro);
     };
-  });
+  }, []);
 
   const resolveJrLineName = {
     kyoto: { name: '京都線', symbol: 'A', color: 'rgb(16, 113, 182)' },
