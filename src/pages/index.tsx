@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { doFetch } from './api/osakaMetroTrafficInfo';
 import style from './index.module.css';
 import { BetterDiagramTable } from '@/components/betterDiagram';
 import { Trafficinfo } from '@/components/trainInfo';

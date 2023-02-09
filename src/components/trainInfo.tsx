@@ -34,7 +34,9 @@ export const Trafficinfo: FC = () => {
       const responseTrafficInfo = await (
         await fetch(`/api/osakaMetroTrafficInfo`)
       ).json();
-      const responseTrafficInfoMap = new Map(responseTrafficInfo);
+      const responseTrafficInfoMap = new Map(
+        responseTrafficInfo
+      ) as TableInfoListMap;
       setMetroInfo(responseTrafficInfoMap);
     };
 

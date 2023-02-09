@@ -1,6 +1,6 @@
 import { parseHTML } from 'linkedom';
 
-type Status = 'delay' | 'normal' | 'stop';
+export type Status = 'delay' | 'normal' | 'stop';
 
 type TableInfoList = [string, Status][];
 
