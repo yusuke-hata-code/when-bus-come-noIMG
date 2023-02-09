@@ -15,6 +15,7 @@ module.exports = {
       files: ['*.{spec,test}.{js,ts}'],
       rules: {
         'no-console': 'off',
+        'unicorn/no-nested-ternary': 'off',
       },
     },
     {
@@ -32,6 +33,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'import'],
   rules: {
+    'unicorn/no-nested-ternary': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'react/prefer-stateless-function': ['error'],
@@ -43,6 +45,7 @@ module.exports = {
     'no-return-await': 'warn',
     'require-atomic-updates': 'warn',
     'require-await': 'warn',
+    'unicorn/prefer-includes': 'off',
     'no-param-reassign': ['warn', { props: true }],
     curly: ['warn', 'multi-line'],
     'no-console': [
@@ -79,7 +82,6 @@ module.exports = {
     'import/newline-after-import': 'warn',
     'import/no-duplicates': 'warn',
     'import/no-default-export': 'warn',
-    'import/no-default-export': 'off',
     '@typescript-eslint/padding-line-between-statements': [
       'warn',
       { blankLine: 'always', prev: '*', next: 'type' },

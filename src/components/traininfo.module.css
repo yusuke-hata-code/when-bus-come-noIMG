@@ -1,0 +1,29 @@
+.lineInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  font-size: 50px;
+}
+
+.line {
+  margin: 0 5px 0 10px;
+}
+
+.symbol {
+  color: white;
+  background-color: aliceblue;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.symbolcircle {
+  border-radius: 50%;
+}
+
+.trafficInfo {
+  display: flex;
+  align-items: center;
+}

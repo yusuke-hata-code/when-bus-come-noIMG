@@ -1,7 +1,12 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import style from './play.module.css';
+import type { ReturnObject } from './api/trafficInfo';
+import { BetterDiagramTable } from '@/components/betterDiagram';
 import { DiagramTable } from '@/components/diagramTable';
+import { Trafficinfo } from '@/components/trainInfo';
+
 // let sampleDiagram: number[] = [
 //   1675200900000, 1675202460000, 1675205040000, 1675206600000, 1675210680000,
 //   1675212300000, 1675215600000, 1675216980000, 1675219200000, 1675222740000,
@@ -50,6 +55,17 @@ export default function play() {
           <DiagramTable dist="tonda" />
         </div>
       </div>
+      <div className={style.traffic}>
+        <Trafficinfo />
+      </div>
     </>
   );
 }
+// style={{
+//   display: 'flex',
+//   alignItems: 'center',
+//   width: '100vw',
+//   height: '100vh',
+//   justifyContent: 'center',
+//   flexDirection: 'column',
+// }}
