@@ -68,8 +68,8 @@ const handler = async (req: NextRequest) => {
           status: 200,
           headers: { 'content-type': 'application/json' },
         });
-      } catch {
-        return new Response(JSON.stringify([]), {
+      } catch (err) {
+        return new Response(JSON.stringify(err), {
           status: 404,
           headers: { 'content-type': 'application/json' },
         });
