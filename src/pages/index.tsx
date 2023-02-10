@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import style from './index.module.css';
-import { BetterDiagramTable } from '@/components/betterDiagram';
+import { DiagramTable } from '@/components/diagram';
 import { Trafficinfo } from '@/components/trainInfo';
 // let sampleDiagram: number[] = [
 //   1675200900000, 1675202460000, 1675205040000, 1675206600000, 1675210680000,
@@ -54,10 +54,10 @@ export default function home() {
         <div className={style.currentTime}>{currentTime}</div>
         <div className={style.diagramTables}>
           <div className={style.takatsuki}>
-            <BetterDiagramTable dist="takatsuki" />
+            <DiagramTable dist="takatsuki" />
           </div>
           <div className={style.tonda}>
-            <BetterDiagramTable dist="tonda" />
+            <DiagramTable dist="tonda" />
           </div>
         </div>
         <div className={style.traffic}>

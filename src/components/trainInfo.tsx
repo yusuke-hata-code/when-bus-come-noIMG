@@ -41,7 +41,7 @@ export const Trafficinfo: FC = () => {
     };
 
     fetchapi();
-    const intervalMetro = setInterval(fetchapi, 30_000);
+    const intervalMetro = setInterval(fetchapi, 600_000);
 
     return () => {
       clearInterval(intervalMetro);
