@@ -38,7 +38,7 @@ export const DiagramTable: FC<Props> = ({ dist }) => {
 
     setTimeout(() => {
       location.reload();
-    }, tomorrow.getTime() - Date.now());
+    }, tomorrow.getTime() - Date.now() + 1000 * 3600 * 4);
   }, []);
 
   // <table border={1} className={`${style[dist]} ${style.diagramTable}`}>
