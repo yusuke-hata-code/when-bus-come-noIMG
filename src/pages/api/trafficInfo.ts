@@ -133,13 +133,14 @@ const SearchTrafficInfo = async (): Promise<ReturnObject> => {
       const { from, to } = trafficjson.value.lines['kyoto'].section;
 
       if (
-        stationList.indexOf(from) <= stationList.indexOf('摂津富田') &&
-        stationList.indexOf(to) >= stationList.indexOf('高槻') &&
-        trafficjson.value.lines['kyoto'].status.includes('遅')
+        stationList.indexOf(from) >= stationList.indexOf('摂津富田') &&
+        stationList.indexOf(to) <= stationList.indexOf('高槻')
       ) {
-        returnObject.kyoto = 'delay';
-      } else {
-        returnObject.kyoto = 'stop';
+        if (trafficjson.value.lines['kyoto'].status.includes('遅')) {
+          returnObject.kyoto = 'delay';
+        } else {
+          returnObject.kyoto = 'stop';
+        }
       }
     }
   }

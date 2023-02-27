@@ -18,8 +18,8 @@ const distImg = {
 const tommorrowNow = new Date(Date.now() + 1000 * 3600 * 24);
 const tomorrow = new Date(
   tommorrowNow.getFullYear(),
-  tommorrowNow.getMonth() - 1,
-  tommorrowNow.getDay(),
+  tommorrowNow.getMonth(),
+  tommorrowNow.getDate(),
   0,
   0
 );
