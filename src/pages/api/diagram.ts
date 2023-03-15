@@ -42,15 +42,19 @@ const getDiagram = async (url: string): Promise<Diagram> => {
 
   const dateString = Temporal.Now.plainDateISO().toString();
   const { document } = parseHTML(text);
-console.log([
-    ...document.querySelectorAll('div[style="display:block"] .hour-frame'),
-  ].flatMap((e) => {
-    const hour = `0${e.getAttribute('value')}`.slice(-2);
+  console.log(
+    [
+      ...document.querySelectorAll('div[style="display:block"] .hour-frame'),
+    ].flatMap((e) => {
+      const hour = `0${e.getAttribute('value')}`.slice(-2);
 
-    return [...e.querySelectorAll('.minute>span[aria-hidden="true"]')].map(
-      (e) => new Date(`${dateString}T${hour}:${e.textContent}+09:00`).getTime()
-    );
-  });)
+      return [...e.querySelectorAll('.minute>span[aria-hidden="true"]')].map(
+        (e) =>
+          new Date(`${dateString}T${hour}:${e.textContent}+09:00`).getTime()
+      );
+    })
+  );
+
   return [
     ...document.querySelectorAll('div[style="display:block"] .hour-frame'),
   ].flatMap((e) => {
