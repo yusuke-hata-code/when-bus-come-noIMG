@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import style from './index.module.css';
 import { DiagramTable } from '@/components/diagram';
 import { Trafficinfo } from '@/components/trainInfo';
+
 // let sampleDiagram: number[] = [
 //   1675200900000, 1675202460000, 1675205040000, 1675206600000, 1675210680000,
 //   1675212300000, 1675215600000, 1675216980000, 1675219200000, 1675222740000,
