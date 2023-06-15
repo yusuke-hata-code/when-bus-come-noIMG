@@ -90,9 +90,9 @@ export const DiagramTable: FC<Props> = ({ dist }) => {
                   Math.trunc(diagram.limit / 60) < 10 ? style.alert : style.none
                 }
               >
-                <img className={style.iconLeft} src={distImg[dist]}></img>
+                {/* <img className={style.iconLeft} src={distImg[dist]}></img> */}
                 おくれないでね
-                <img className={style.iconRight} src={distImg[dist]}></img>
+                {/* <img className={style.iconRight} src={distImg[dist]}></img> */}
               </div>
             </div>
           </>

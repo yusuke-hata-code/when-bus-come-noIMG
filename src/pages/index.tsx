@@ -41,7 +41,7 @@ export default function home() {
       <Head>
         <title>when-bus-come</title>
       </Head>
-      <img className={style.hanitan} src={'/hanitan.png'} alt="logo" />
+      {/* <img className={style.hanitan} src={'/hanitan.png'} alt="logo" /> */}
       <div
         style={{
           display: 'flex',
