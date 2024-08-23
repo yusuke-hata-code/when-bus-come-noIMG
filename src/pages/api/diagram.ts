@@ -26,7 +26,7 @@ const getUrl = (type: string | 'takatsuki' | 'tonda'): string | null => {
       datetime,
       startId: '00150093',
       stopNo: '8',
-      course: '0003700142',
+      course: '0003700093',
     },
   } as const;
 
