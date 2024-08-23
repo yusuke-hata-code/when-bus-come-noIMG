@@ -90,11 +90,29 @@ export const Trafficinfo: FC = () => {
                   {/* <span>{trafficinfo[lineName]}</span> */}
 
                   {jrTrafficinfo[lineName] === 'normal' ? (
-                    <img src="ico_side_normal.svg" width="60" height="60"></img>
+                    <a href="https://trafficinfo.westjr.co.jp/kinki.html">
+                      <img
+                        src="ico_side_normal.svg"
+                        width="60"
+                        height="60"
+                      ></img>
+                    </a>
                   ) : jrTrafficinfo[lineName] === 'delay' ? (
-                    <img src="ico_side_delay.svg" width="60" height="60"></img>
+                    <a href="https://trafficinfo.westjr.co.jp/kinki.html">
+                      <img
+                        src="ico_side_delay.svg"
+                        width="60"
+                        height="60"
+                      ></img>
+                    </a>
                   ) : (
-                    <img src="ico_side_adjust.svg" width="60" height="60"></img>
+                    <a href="https://trafficinfo.westjr.co.jp/kinki.html">
+                      <img
+                        src="ico_side_adjust.svg"
+                        width="60"
+                        height="60"
+                      ></img>
+                    </a>
                   )}
                 </div>
               );
@@ -113,11 +131,17 @@ export const Trafficinfo: FC = () => {
                 </span>
                 <span className={style.line}>{lineName}</span>
                 {osakaMetroTrafficinfo?.get(lineName) === 'normal' ? (
-                  <img src="ico_side_normal.svg" width="60" height="60"></img>
+                  <a href="https://subway.osakametro.co.jp/guide/subway_information.php">
+                    <img src="ico_side_normal.svg" width="60" height="60"></img>
+                  </a>
                 ) : osakaMetroTrafficinfo?.get(lineName) === 'delay' ? (
-                  <img src="ico_side_delay.svg" width="60" height="60"></img>
+                  <a href="https://subway.osakametro.co.jp/guide/subway_information.php">
+                    <img src="ico_side_delay.svg" width="60" height="60"></img>
+                  </a>
                 ) : (
-                  <img src="ico_side_adjust.svg" width="60" height="60"></img>
+                  <a href="https://subway.osakametro.co.jp/guide/subway_information.php">
+                    <img src="ico_side_adjust.svg" width="60" height="60"></img>
+                  </a>
                 )}
               </div>
             );
