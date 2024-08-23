@@ -31,13 +31,16 @@ export const Trafficinfo: FC = () => {
   const [osakaMetroTrafficinfo, setMetroInfo] = useState<TableInfoListMap>();
   useEffect(() => {
     const fetchapi = async () => {
-      const responseTrafficInfo = await (
-        await fetch(`/api/osakaMetroTrafficInfo`)
-      ).json();
-      const responseTrafficInfoMap = new Map(
-        responseTrafficInfo
+      const responseTrafficInfo = await fetch(
+        `/api/osakaMetroTrafficInfo`
+      ).then(async (res) => await res.json());
+      const statusMap = new Map(
+        responseTrafficInfo.map((obj) => {
+          const [key, value] = Object.entries(obj)[0];
+          return [key, value];
+        })
       ) as TableInfoListMap;
-      setMetroInfo(responseTrafficInfoMap);
+      setMetroInfo(statusMap);
     };
 
     fetchapi();
